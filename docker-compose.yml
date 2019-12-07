@@ -1,0 +1,15 @@
+version: '3'
+services:
+    router:
+        image: ytmusicquiz-proxy
+        build: proxy
+        ports:
+            - '8080:80'
+
+    dashboard:
+        image: ytmusicquiz-dashboard
+        build: ../ytmusicquiz-dashboard/
+
+    backend:
+        image: ytmusicquiz
+        build: ../ytmusicquiz/
