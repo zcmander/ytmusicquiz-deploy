@@ -1,15 +1,22 @@
 version: '3'
 services:
     router:
-        image: ytmusicquiz-proxy
+        image: ${DOCKER_REGISTRY}/ytmusicquiz-proxy
         build: proxy
-        ports:
-            - '8080:80'
 
     dashboard:
-        image: ytmusicquiz-dashboard
+        image: ${DOCKER_REGISTRY}/ytmusicquiz-dashboard
         build: ../ytmusicquiz-dashboard/
 
     backend:
-        image: ytmusicquiz
+        image: ${DOCKER_REGISTRY}/ytmusicquiz
         build: ../ytmusicquiz/
+
+    static:
+        image: ${DOCKER_REGISTRY}/ytmusicquiz-static
+        build:
+            context: ../ytmusicquiz/
+            dockerfile: Dockerfile-static
+
+    redis:
+        image: redis
