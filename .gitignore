@@ -4,3 +4,4 @@
 .terraform.tfstate.lock.info
 # Module directory
 .terraform/
+.env
