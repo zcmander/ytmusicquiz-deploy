@@ -4,6 +4,10 @@ provider "aws" {
   region  = "eu-west-1"
 }
 
+module "iam" {
+  source = "./iam"
+}
+
 module "vpc" {
   source = "./vpc"
 }
@@ -37,6 +41,8 @@ module "ecs" {
   vpc_id = module.vpc.vpc_id
 
   subnet_id = module.vpc.subnet1_id
+
+  task_execution_role_arn = module.iam.ecs_task_execution_role_arn
 
   db_access_sg_id = module.rds.db_access_sg_id
 

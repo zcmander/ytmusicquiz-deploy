@@ -6,6 +6,10 @@ variable "subnet_id" {
     type = string
 }
 
+variable "task_execution_role_arn" {
+    type = string
+}
+
 variable "db_access_sg_id" {
     type = string
 }

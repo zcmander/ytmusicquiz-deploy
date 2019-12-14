@@ -11,7 +11,7 @@ resource "aws_ecs_task_definition" "ytmusicquiz-task" {
       rds_password = var.rds_password
   })
 
-  execution_role_arn = "arn:aws:iam::074957091972:role/ecsTaskExecutionRole"
+  execution_role_arn = var.task_execution_role_arn
 
   cpu = 256
   memory = 512
