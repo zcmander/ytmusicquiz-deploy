@@ -11,7 +11,7 @@ module "vpc" {
 module "lb" {
   source = "./lb"
 
-  sg_id = module.vpc.sg_id
+  access_sg_id = module.ecs.ecs_acces_sg_id
 
   vpc_id = module.vpc.vpc_id
 
@@ -34,9 +34,10 @@ module "ecr" {
 module "ecs" {
   source = "./ecs"
 
+  vpc_id = module.vpc.vpc_id
+
   subnet_id = module.vpc.subnet1_id
 
-  lb_access_sg_id = module.vpc.sg_id
   db_access_sg_id = module.rds.db_access_sg_id
 
   rds_address = module.rds.rds_address

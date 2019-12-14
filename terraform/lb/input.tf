@@ -1,4 +1,4 @@
-variable "sg_id" {
+variable "access_sg_id" {
     type = string
 }
 

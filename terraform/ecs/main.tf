@@ -32,7 +32,7 @@ resource "aws_ecs_service" "ytmusicquiz" {
           var.subnet_id
       ]
       security_groups = [
-          var.lb_access_sg_id,
+          aws_security_group.ecs_sg.id,
           var.db_access_sg_id
       ]
       assign_public_ip = true
@@ -42,5 +42,41 @@ resource "aws_ecs_service" "ytmusicquiz" {
     target_group_arn = var.lb_target_group_id
     container_name   = "ytmusicquiz-proxy"
     container_port   = "80"
+  }
+}
+
+resource "aws_security_group" "ecs_access_sg" {
+  vpc_id      = var.vpc_id
+  name        = "ecs-access-sg"
+  description = "Allow access to ECS"
+}
+
+resource "aws_security_group" "ecs_sg" {
+  vpc_id = var.vpc_id
+  name      = "ecs_sg"
+  description = "Elastic Container Service tasks"
+
+  ingress {
+    protocol  = -1
+    self      = true
+    from_port = 0
+    to_port   = 0
+    description = ""
+  }
+
+  ingress {
+    protocol        = "tcp"
+    from_port = 80
+    to_port   = 80
+    security_groups = [
+          aws_security_group.ecs_access_sg.id
+    ]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 }

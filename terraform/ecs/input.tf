@@ -1,8 +1,8 @@
-variable "subnet_id" {
+variable "vpc_id" {
     type = string
 }
 
-variable "lb_access_sg_id" {
+variable "subnet_id" {
     type = string
 }
 
