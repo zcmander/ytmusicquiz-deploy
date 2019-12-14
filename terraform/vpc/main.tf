@@ -15,12 +15,16 @@ resource "aws_eip" "lb" {
     vpc      = true
 }
 
+resource "aws_internet_gateway" "gw" {
+  vpc_id = aws_default_vpc.default.id
+}
+
 resource "aws_route_table" "r" {
   vpc_id = aws_default_vpc.default.id
 
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = "igw-09263f1d531028a57"
+    gateway_id = aws_internet_gateway.gw.id
   }
 }
 
