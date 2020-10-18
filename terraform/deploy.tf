@@ -53,3 +53,7 @@ module "ecs" {
 
   lb_target_group_id = module.lb.lb_target_group_id
 }
+
+output "lb_url" {
+  value = module.lb.lb_dns_name
+}
