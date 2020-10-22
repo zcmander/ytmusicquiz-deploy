@@ -9,6 +9,11 @@ resource "aws_ecs_task_definition" "ytmusicquiz-task" {
       rds_port = var.rds_port
       rds_username = var.rds_username
       rds_password = var.rds_password
+
+      image_ytmusicquiz_static = var.image-ytmusicquiz-static
+      image_ytmusicquiz_proxy = var.image-ytmusicquiz-proxy
+      image_ytmusicquiz_dashboard = var.image-ytmusicquiz-dashboard
+      image_ytmusicquiz = var.image-ytmusicquiz
   })
 
   execution_role_arn = var.task_execution_role_arn

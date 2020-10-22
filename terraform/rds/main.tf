@@ -36,6 +36,10 @@ resource "aws_security_group" "rds_sg" {
   }
 }
 
+resource "aws_db_subnet_group" "default_subnet" {
+    name       = "ytmusicquiz"
+    subnet_ids = var.subnets
+}
 
 resource "aws_db_instance" "default" {
     allocated_storage    = 5
@@ -45,6 +49,8 @@ resource "aws_db_instance" "default" {
     name                 = "ytmusicquiz"
     username             = "ytmusicquizadmin"
     password             = "adminpass"
+
+    db_subnet_group_name = aws_db_subnet_group.default_subnet.name
 
     vpc_security_group_ids = [aws_security_group.rds_sg.id]
 

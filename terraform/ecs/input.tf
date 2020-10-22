@@ -1,3 +1,19 @@
+variable "image-ytmusicquiz-static" {
+    type = string
+}
+
+variable "image-ytmusicquiz-proxy" {
+    type = string
+}
+
+variable "image-ytmusicquiz-dashboard" {
+    type = string
+}
+
+variable "image-ytmusicquiz" {
+    type = string
+}
+
 variable "vpc_id" {
     type = string
 }

@@ -1,4 +1,6 @@
 
+# This role is required by tasks to pull container images and publish container
+# logs to Amazon CloudWatch on your behalf.
 data "aws_iam_policy_document" "ecsTaskExecutionRole" {
     statement {
         actions = ["sts:AssumeRole"]

@@ -1,51 +1,44 @@
-[
-    {
+[{
         "name": "ytmusicquiz-proxy",
-        "image": "074957091972.dkr.ecr.eu-west-1.amazonaws.com/ytmusicquiz-proxy:latest",
-        "portMappings": [
-            {
-                "containerPort": 80,
-                "hostPort": 80
-            }
-        ],
+        "image": "${image_ytmusicquiz_proxy}:latest",
+        "portMappings": [{
+            "containerPort": 80,
+            "hostPort": 80
+        }],
         "logConfiguration": {
             "logDriver": "awslogs",
             "options": {
-              "awslogs-region": "eu-west-1",
-              "awslogs-group": "ytmusicquiz",
-              "awslogs-stream-prefix": "ytmusicquiz-proxy"
+                "awslogs-region": "eu-west-1",
+                "awslogs-group": "ytmusicquiz",
+                "awslogs-stream-prefix": "ytmusicquiz-proxy"
             }
         }
     },
     {
         "name": "ytmusicquiz-dashboard",
-        "image": "074957091972.dkr.ecr.eu-west-1.amazonaws.com/ytmusicquiz-dashboard:latest",
+        "image": "${image_ytmusicquiz_dashboard}:latest",
         "essential": true,
-        "portMappings": [
-            {
-                "containerPort": 81,
-                "hostPort": 81
-            }
-        ],
+        "portMappings": [{
+            "containerPort": 81,
+            "hostPort": 81
+        }],
         "logConfiguration": {
             "logDriver": "awslogs",
             "options": {
-              "awslogs-region": "eu-west-1",
-              "awslogs-group": "ytmusicquiz",
-              "awslogs-stream-prefix": "ytmusicquiz-dashboard"
+                "awslogs-region": "eu-west-1",
+                "awslogs-group": "ytmusicquiz",
+                "awslogs-stream-prefix": "ytmusicquiz-dashboard"
             }
         }
     },
     {
         "name": "ytmusicquiz",
-        "image": "074957091972.dkr.ecr.eu-west-1.amazonaws.com/ytmusicquiz:latest",
+        "image": "${image_ytmusicquiz}:latest",
         "essential": true,
-        "portMappings": [
-            {
-                "containerPort": 8000,
-                "hostPort": 8000
-            }
-        ],
+        "portMappings": [{
+            "containerPort": 8000,
+            "hostPort": 8000
+        }],
         "environment": [
             { "name": "DJANGO_SETTINGS_MODULE", "value": "ytmusicquiz.settings_production" },
             { "name": "DATABASE_HOST", "value": "${rds_host}" },
@@ -57,34 +50,32 @@
         "logConfiguration": {
             "logDriver": "awslogs",
             "options": {
-              "awslogs-region": "eu-west-1",
-              "awslogs-group": "ytmusicquiz",
-              "awslogs-stream-prefix": "ytmusicquiz"
+                "awslogs-region": "eu-west-1",
+                "awslogs-group": "ytmusicquiz",
+                "awslogs-stream-prefix": "ytmusicquiz"
             }
         }
     },
     {
         "name": "ytmusicquiz-static",
-        "image": "074957091972.dkr.ecr.eu-west-1.amazonaws.com/ytmusicquiz-static:latest",
+        "image": "${image_ytmusicquiz_static}:latest",
         "essential": true,
-        "portMappings": [
-            {
-                "containerPort": 82,
-                "hostPort": 82
-            }
-        ],
+        "portMappings": [{
+            "containerPort": 82,
+            "hostPort": 82
+        }],
         "logConfiguration": {
             "logDriver": "awslogs",
             "options": {
-              "awslogs-region": "eu-west-1",
-              "awslogs-group": "ytmusicquiz",
-              "awslogs-stream-prefix": "ytmusicquiz-static"
+                "awslogs-region": "eu-west-1",
+                "awslogs-group": "ytmusicquiz",
+                "awslogs-stream-prefix": "ytmusicquiz-static"
             }
         }
     },
     {
         "name": "ytmusicquiz-worker",
-        "image": "074957091972.dkr.ecr.eu-west-1.amazonaws.com/ytmusicquiz:latest",
+        "image": "${image_ytmusicquiz}:latest",
         "essential": true,
         "environment": [
             { "name": "DJANGO_SETTINGS_MODULE", "value": "ytmusicquiz.settings_production" },
@@ -103,9 +94,9 @@
         "logConfiguration": {
             "logDriver": "awslogs",
             "options": {
-              "awslogs-region": "eu-west-1",
-              "awslogs-group": "ytmusicquiz",
-              "awslogs-stream-prefix": "ytmusicquiz-worker"
+                "awslogs-region": "eu-west-1",
+                "awslogs-group": "ytmusicquiz",
+                "awslogs-stream-prefix": "ytmusicquiz-worker"
             }
         }
     },
@@ -113,19 +104,17 @@
         "name": "ytmusicquiz-redis",
         "image": "redis",
         "essential": true,
-        "portMappings": [
-            {
-                "containerPort": 6379,
-                "hostPort": 6379
-            }
-        ],
+        "portMappings": [{
+            "containerPort": 6379,
+            "hostPort": 6379
+        }],
         "logConfiguration": {
             "logDriver": "awslogs",
             "options": {
-              "awslogs-region": "eu-west-1",
-              "awslogs-group": "ytmusicquiz",
-              "awslogs-stream-prefix": "ytmusicquiz-redis"
+                "awslogs-region": "eu-west-1",
+                "awslogs-group": "ytmusicquiz",
+                "awslogs-stream-prefix": "ytmusicquiz-redis"
             }
         }
     }
-  ]
+]
