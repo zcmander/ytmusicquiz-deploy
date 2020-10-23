@@ -7,9 +7,9 @@ output "repository_ytmuiscquiz_static" {
 }
 
 output "repository_ytmuiscquiz_proxy" {
-  value = aws_ecr_repository.ytmusicquiz.repository_url
+  value = aws_ecr_repository.ytmusicquiz-proxy.repository_url
 }
 
 output "repository_ytmuiscquiz_dashboard" {
-  value = aws_ecr_repository.ytmusicquiz.repository_url
+  value = aws_ecr_repository.ytmusicquiz-dashboard.repository_url
 }
