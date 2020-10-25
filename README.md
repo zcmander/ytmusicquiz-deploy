@@ -13,11 +13,6 @@ See related projects:
 
 This repository contains all declarative infrastructure code needed to set up the environment to AWS. For detailed information on how to do use these, see the documentation project for specific details.
 
-## Guides
-
- * [Getting started](getting_started.md) - A guide to set up development environment.
- * [Production environment](production.md) - A guide to set up production environment to AWS using Terraform.
-
 [repo_ytmusicquiz]: https://github.com/zcmander/ytmusicquiz/
 [repo_ytmusicquiz_dashboard]: https://github.com/zcmander/ytmusicquiz-dashboard/
 [repo_ytmusicquiz_deploy]: https://github.com/zcmander/ytmusicquiz-deploy/
